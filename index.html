@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقديم شكوى أو طلب</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="./flag.png.svg" alt="علم مصر" class="flag">
+            <div class="header-text">
+                <h1>تقديم شكوى أو طلب</h1>
+                <p>تقديم الشكاوى والطلبات إلى السيد النائب أحمد حسين الصياد</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="background-image-container"></div>
+
+    <div class="container">
+        <form id="complaintForm">
+            <!-- الاسم -->
+            <div class="form-group">
+                <label for="name">الاسم الكامل *</label>
+                <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+            </div>
+
+            <!-- السن -->
+            <div class="form-group">
+                <label for="age">السن *</label>
+                <input type="number" id="age" name="age" required min="1" max="150" placeholder="أدخل سنك">
+            </div>
+
+            <!-- الرقم القومي -->
+            <div class="form-group">
+                <label for="idNumber">الرقم القومي *</label>
+                <input type="text" id="idNumber" name="idNumber" required placeholder="أدخل الرقم القومي">
+            </div>
+
+            <!-- العنوان -->
+            <div class="form-group">
+                <label>العنوان *</label>
+                <div class="address-container">
+                    <div class="governorate">
+                        <label>محافظة المنيا</label>
+                        <input type="text" value="محافظة المنيا" disabled>
+                    </div>
+                    <div class="district-selector">
+                        <label for="district">اختر المنطقة *</label>
+                        <div class="slider-container">
+                            <div class="slider-track">
+                                <div class="slider-thumb" id="sliderThumb"></div>
+                            </div>
+                            <div class="slider-labels">
+                                <span class="label-left">بندر المنيا</span>
+                                <span class="label-center">مركز المنيا</span>
+                                <span class="label-right">المنيا الجديدة</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="district" name="district" value="بندر المنيا">
+                    </div>
+                </div>
+            </div>
+
+            <!-- العنوان التفصيلي -->
+            <div class="form-group">
+                <label for="detailedAddress">العنوان التفصيلي *</label>
+                <input type="text" id="detailedAddress" name="detailedAddress" required
+                    placeholder="أدخل العنوان التفصيلي (الشارع، المنزل، إلخ)">
+            </div>
+
+            <!-- الشكوى أو الطلب -->
+            <div class="form-group">
+                <label for="complaint">الشكوى أو الطلب *</label>
+                <textarea id="complaint" name="complaint" required placeholder="اكتب شكواك أو طلبك بالتفصيل..."
+                    rows="6"></textarea>
+            </div>
+
+            <!-- التسجيل الصوتي -->
+            <div class="form-group">
+                <label>تسجيل صوتي (اختياري)</label>
+                <div class="audio-section">
+                    <button type="button" id="recordBtn" class="btn-record">🎤 بدء التسجيل</button>
+                    <button type="button" id="stopBtn" class="btn-stop" style="display: none;">⏹️ إيقاف التسجيل</button>
+                    <div id="audioPlayback" style="display: none; margin-top: 10px;">
+                        <audio id="audioPlayer" controls style="width: 100%;"></audio>
+                        <button type="button" id="deleteAudio" class="btn-delete">حذف التسجيل</button>
+                    </div>
+                    <p class="audio-info">انقر على الزر لتسجيل شكواك صوتياً</p>
+                </div>
+            </div>
+
+            <!-- إرفاق صورة أو ملف -->
+            <div class="form-group">
+                <label for="attachment">إرفاق صورة أو ملف (اختياري)</label>
+                <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                    multiple>
+                <p class="file-info">الملفات المدعومة: صور، PDF، Word، Excel</p>
+                <div id="filePreview" class="file-preview"></div>
+            </div>
+
+            <!-- الأزرار -->
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">إرسال الطلب</button>
+                <button type="reset" class="btn-reset">مسح النموذج</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <p>&copy; 2026 حقوق الملكية محفوظة لـ <strong>محمد علي</strong></p>
+        <p>الهاتف: <a href="tel:+201026465273">01026465273</a></p>
+    </footer>
+
+    <!-- رسالة التحميل -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>جاري رفع الملفات... يرجى الانتظار</p>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
